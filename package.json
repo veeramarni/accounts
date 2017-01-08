@@ -4,8 +4,8 @@
   "description": "Fullstack authentication and accounts-management",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack -p --config --progress --watch",
-    "compile": "webpack -p --config --progress",
+    "start": "webpack -p --config ./webpack.config.js --progress --watch",
+    "compile": "webpack -p --config ./webpack.config.js --progress",
     "flow:check": "flow check",
     "prepublishOnly": "npm run compile",
     "postinstall": "npm run compile",
