@@ -8,7 +8,6 @@
     "compile": "webpack -p --config ./webpack.config.js --progress",
     "flow:check": "flow check",
     "prepublishOnly": "npm run compile",
-    "postinstall": "npm run compile",
     "pretest": "npm run lint",
     "test": "npm run testonly",
     "test-ci": "npm run lint && npm run coverage",
