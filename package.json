@@ -7,13 +7,14 @@
     "start": "webpack -p --config --progress --watch",
     "compile": "webpack -p --config --progress",
     "flow:check": "flow check",
-    "prepublish": "npm run compile",
+    "prepublishOnly": "npm run compile",
+    "postinstall": "npm run compile",
     "pretest": "npm run lint",
     "test": "npm run testonly",
-    "test-ci": "yarn lint && yarn coverage",
+    "test-ci": "npm run lint && npm run coverage",
     "testonly": "jest",
     "lint": "eslint src",
-    "coverage": "yarn testonly -- --coverage",
+    "coverage": "npm run testonly -- --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "jest": {
@@ -64,8 +65,7 @@
     "lodash": "^4.16.4",
     "regenerator-runtime": "^0.9.6",
     "webpack": "^1.13.3",
-    "webpack-node-externals": "^1.5.4",
-    "yarn": "^0.16.1"
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "apollo-errors": "^1.2.1",
