@@ -1,25 +1,35 @@
 // @flow
 
+import type { HashAlgorithm } from './config';
+
+export type PasswordType = string | {
+  digest: string,
+  algorithm: HashAlgorithm
+};
+
 export type UserObjectType = {
   username: ?string,
   email: ?string,
-  id: ?string,
+  emails?: Object[],
+  id: string,
   profile: ?Object,
   services: ?Object
 };
 
 export type CreateUserType = {
-  username: ?string,
-  email: ?string,
-  password: ?string,
-  profile: ?Object
+  username?: string,
+  email?: string,
+  password?: PasswordType,
+  profile?: Object
 };
 
-export type PasswordLoginUserType = string | {
-  id: ?string,
-  username: ?string,
-  email: ?string
+export type PasswordLoginUserIdentityType = {
+  id?: string,
+  username?: string,
+  email?: string
 };
+
+export type PasswordLoginUserType = string | PasswordLoginUserIdentityType;
 
 export type TokensType = {
   accessToken: ?string,
@@ -30,6 +40,12 @@ export type LoginReturnType = {
   sessionId: string,
   user: UserObjectType,
   tokens: TokensType
+};
+
+export type ImpersonateReturnType = {
+  authorized: boolean,
+  tokens?: TokensType,
+  user?: UserObjectType
 };
 
 export type SessionType = {

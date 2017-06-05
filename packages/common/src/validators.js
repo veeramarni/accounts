@@ -9,8 +9,8 @@ export const isEmail = (email: ?string) => {
 };
 
 export const validateEmail = (email: ?string): boolean => {
-  const isValid = !isEmpty(trim(email));
-  return isValid;
+  const isValid = !isEmpty(trim(email || '')) && isEmail(email);
+  return Boolean(isValid);
 };
 
 export const validatePassword = (password: ?string): boolean => {
@@ -19,6 +19,7 @@ export const validatePassword = (password: ?string): boolean => {
 };
 
 export const validateUsername = (username: ?string): boolean => {
-  const isValid = !isEmpty(trim(username));
-  return isValid;
+  const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]*$/;
+  const isValid = username && !isEmpty(trim(username)) && usernameRegex.test(username);
+  return Boolean(isValid);
 };

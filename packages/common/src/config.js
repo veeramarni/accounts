@@ -1,16 +1,35 @@
+// @flow
 import { EMAIL_ONLY } from './passwordSignupFields';
-// eslint-disable-next-line import/no-named-as-default
+import type { PasswordSignupFields } from './passwordSignupFields';
 
-export default {
+export type HashAlgorithm =
+  'sha' | 'sha1' | 'sha224' | 'sha256' | 'sha384' | 'sha512' | 'md5' | 'ripemd160';
+
+export type AccountsCommonConfiguration = {
+  siteUrl?: string,
+  sendVerificationEmail?: boolean,
+  sendEnrollmentEmail?: boolean,
+  sendWelcomeEmail?: boolean,
+  forbidClientAccountCreation?: boolean,
+  restrictCreationByEmailDomain?: ?string,
+  passwordResetTokenExpirationInDays?: number,
+  passwordEnrollTokenExpirationInDays?: number,
+  passwordSignupFields?: PasswordSignupFields,
+  minimumPasswordLength?: number,
+  path?: string,
+  passwordHashAlgorithm?: HashAlgorithm
+};
+
+export default ({
+  siteUrl: 'http://localhost:3000',
   sendVerificationEmail: false,
   sendEnrollmentEmail: false,
   sendWelcomeEmail: false,
   forbidClientAccountCreation: false,
   restrictCreationByEmailDomain: null,
-  loginExpirationInDays: 90,
   passwordResetTokenExpirationInDays: 3,
   passwordEnrollTokenExpirationInDays: 30,
   passwordSignupFields: EMAIL_ONLY,
   minimumPasswordLength: 7,
   path: '/accounts',
-};
+}: AccountsCommonConfiguration);
